@@ -25,8 +25,9 @@ Create OwnCloud Database:
 	FLUSH PRIVILEGES;
 	EXIT;
 Download Latest OwnCloud Release:
-	cd /tmp && wget https://download.owncloud.org/community/owncloud-10.0.8.zip
-	unzip owncloud-10.0.8.zip
+	sudo apt-get install unzip
+	cd /tmp && wget https://download.owncloud.com/server/stable/owncloud-complete-latest.zip
+	unzip owncloud-complete-latest.zip
 	sudo mv owncloud /var/www/html/owncloud/
 Permissions for OwnCloud to function:
 	sudo chown -R www-data:www-data /var/www/html/owncloud/
