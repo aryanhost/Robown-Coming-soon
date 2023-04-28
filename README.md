@@ -68,3 +68,4 @@ Restart Apache2:
 	sudo systemctl restart apache2.service
 Access Owncloud from the LAN:
 	http://LANIP/owncloud
+        
