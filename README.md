@@ -1,73 +1,48 @@
-Install Apache2 HTTP Server:
-	sudo apt update
-	sudo apt install apache2
-	sudo sed -i "s/Options Indexes FollowSymLinks/Options FollowSymLinks/" /etc/apache2/apache2.conf
-	sudo systemctl stop apache2.service
-	sudo systemctl start apache2.service
-	sudo systemctl enable apache2.service
-Install MariaDB Server:
-	sudo apt-get install mariadb-server mariadb-client -y
-	sudo systemctl stop mariadb.service
-	sudo systemctl start mariadb.service
-	sudo systemctl enable mariadb.service
-Secure MariaDB server:
-	sudo mysql_secure_installation
-	sudo systemctl restart mariadb.service
-Install PHP and Related Modules:
-	sudo apt-get install software-properties-common -y
-	sudo add-apt-repository ppa:ondrej/php
-	sudo apt update
-	sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-mbstring php7.4-xmlrpc php7.4-soap 	php7.4-apcu php7.4-smbclient php7.4-ldap php7.4-redis php7.4-gd php7.4-xml php7.4-intl php7.4-json php	7.4-imagick php7.4-mysql php7.4-cli php7.4-mcrypt php7.4-ldap php7.4-zip php7.4-curl -y
-Create OwnCloud Database:
-	sudo mysql -u root -p
-	CREATE DATABASE owncloud;
-	CREATE USER 'ownclouduser'@'localhost' IDENTIFIED BY 'password_here';
-	GRANT ALL ON owncloud.* TO 'ownclouduser'@'localhost' IDENTIFIED BY 'password_here' WITH GRANT OPTION;
-	FLUSH PRIVILEGES;
-	EXIT;
-Download Latest OwnCloud Release:
-	sudo apt-get install unzip
-	cd /tmp && wget https://download.owncloud.com/server/stable/owncloud-complete-latest.zip
-	unzip owncloud-complete-latest.zip
-	sudo mv owncloud /var/www/html/owncloud/
-Permissions for OwnCloud to function:
-	sudo chown -R www-data:www-data /var/www/html/owncloud/
-	sudo chmod -R 755 /var/www/html/owncloud/
-Configure Apache2:
-	sudo nano /etc/apache2/sites-available/owncloud.conf
-	<VirtualHost *:80>
-     ServerAdmin admin@example.com
-     DocumentRoot /var/www/html/owncloud/
-     ServerName avoiderrors.com
-     ServerAlias www.avoiderrors.com
-  
-     Alias /owncloud "/var/www/html/owncloud/"
+# Robown Coming Soon
 
-     <Directory /var/www/html/owncloud/>
-        Options +FollowSymlinks
-        AllowOverride All
-        Require all granted
-          <IfModule mod_dav.c>
-            Dav off
-          </IfModule>
-        SetEnv HOME /var/www/html/owncloud
-        SetEnv HTTP_HOME /var/www/html/owncloud
-     </Directory>
+A WordPress plugin for creating a beautiful coming soon page with countdown timer and customization options
 
-     ErrorLog ${APACHE_LOG_DIR}/error.log
-     CustomLog ${APACHE_LOG_DIR}/access.log combined
+## Features
 
-</VirtualHost>
+- Beautiful and professional coming soon page
+- Countdown timer showing time remaining until site launch
+- Customizable title, description, and launch date
+- Automatic display for non-logged-in users
+- Hidden for administrators and logged-in users
+- Simple admin interface
+- Compatible with all WordPress themes
 
-Enable the OwnCloud and Rewrite Module:
-	sudo a2ensite owncloud.conf
-	sudo a2enmod rewrite
-	sudo a2enmod headers
-	sudo a2enmod env
-	sudo a2enmod dir
-	sudo a2enmod mime
-Restart Apache2:
-	sudo systemctl restart apache2.service
-Access Owncloud from the LAN:
-	http://LANIP/owncloud
-        
+## Installation
+
+1. Download the plugin zip file
+2. Log in to your WordPress admin panel
+3. Go to "Plugins > Add New"
+4. Click "Upload Plugin" button
+5. Select and upload the plugin zip file
+6. Click "Activate" button
+
+## Settings
+
+After installing and activating the plugin, you can configure it through:
+
+**Settings > Coming Soon Page**
+
+In this section you can:
+- Change the site title
+- Set the coming soon page title
+- Edit the page description
+- Specify the launch date
+- Enable/disable the coming soon page
+
+## Important Notes
+
+- The plugin automatically shows the coming soon page to non-logged-in users
+- Administrators and logged-in users won't see the coming soon page
+- To preview the coming soon page as an admin, you can use a private browser window
+
+## Support
+
+For support and bug reports, please visit the [developer's website](https://mortezalotfi.com).
+
+## Version
+Current Version: 2.0 
